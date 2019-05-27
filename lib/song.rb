@@ -17,20 +17,20 @@ class Song
   def self.all
     @@songs
   end
+  extend Memorable
+  #def self.reset_all
+    #self.all.clear
+  #end
 
-  def self.reset_all
-    self.all.clear
-  end
-
-  def self.count
-    self.all.count
-  end
+  #  self.count
+  #self.all.count
+  #end
 
   def artist=(artist)
     @artist = artist
   end
-
-  def to_param
-    name.downcase.gsub(' ', '-')
-  end
+  include Paramable
+  #def to_param
+    #name.downcase.gsub(' ', '-')
+  #end
 end
