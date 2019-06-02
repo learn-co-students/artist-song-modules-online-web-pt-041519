@@ -6,13 +6,13 @@ class Artist
 
   @@artists = []
 
+  def self.find_by_name(name)
+    @@artists.detect{|a| a.name}
+  end
+
   def initialize
     @@artists << self
     @songs = []
-  end
-
-  def self.find_by_name(name)
-    @@artists.detect{|a| a.name == name}
   end
 
   def self.all
@@ -24,10 +24,11 @@ class Artist
   end
 
   def self.count
-    self.all.count
+    @@artists.count
   end
 
   def add_song(song)
+    songs = "Many songs"
     @songs << song
     song.artist = self
   end
@@ -39,4 +40,5 @@ class Artist
   def to_param
     name.downcase.gsub(' ', '-')
   end
+
 end
